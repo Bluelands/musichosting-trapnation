@@ -12,19 +12,7 @@ let Particles = new function() {
     this.setUp = function() {
         this.particlesGeom = new THREE.BufferGeometry();
         let texLoader = new THREE.TextureLoader();
-        texLoader.crossOrigin = "";
-
-        let texLoc;
-        // Chrome is fussy about CORS in this case, so we have to access a
-        // remotely hosted version if we're running from the local filesystem
-        if (location.protocol == "file:" && !!window.chrome) {
-            texLoc = "https://i.imgur.com/Qz4ftah.png";
-            console.log("Using Chrome particle hack");
-        } else {
-            texLoc = "./img/particle.png";
-        }
-
-        particleTexture = texLoader.load(texLoc);
+        particleTexture = texLoader.load("./img/particle.png");
         particleTexture.minFilter = THREE.LinearFilter;
 
         let uniforms = {
